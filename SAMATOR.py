@@ -43,6 +43,7 @@ if file:
             options.add_argument("--no-sandbox")
             options.add_argument("--disable-dev-shm-usage")
             options.add_argument("--disable-blink-features=AutomationControlled")
+            service = Service("/usr/bin/chromedriver")
             driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
             wait = WebDriverWait(driver, 30)
             try:
