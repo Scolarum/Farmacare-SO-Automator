@@ -44,7 +44,11 @@ if file:
             options.add_argument("--disable-dev-shm-usage")
             options.add_argument("--disable-blink-features=AutomationControlled")
             service = Service("/usr/bin/chromedriver")
-            driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+            # USE THIS INSTEAD
+            from selenium.webdriver.chrome.service import Service
+            # Point directly to the location created by packages.txt
+            service = Service("/usr/bin/chromedriver")
+            driver = webdriver.Chrome(service=service, options=options)
             wait = WebDriverWait(driver, 30)
             try:
                 #logging in
