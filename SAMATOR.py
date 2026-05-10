@@ -91,7 +91,8 @@ if file:
                         # navigating the stock update page
                         bfr_stock_el = wait.until(EC.presence_of_element_located((By.XPATH, "//*[@data-testid='stok-value']")))
                         bfr_stock_txt = bfr_stock_el.text
-                        current_stock = int(''.join(filter(str.isdigit, bfr_stock_txt)))
+                        bfr_stock_numb = bfr_stock_txt.replace(".", "").split()
+                        current_stock = int(bfr_stock_numb)
                         aftr_stock = current_stock + row['Selisih']
                         # handling negative stock scenario
                         if aftr_stock < 0:
